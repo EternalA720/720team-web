@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loading...</title>
+    <style>
+        /* --- 1. 基础布局 --- */
+        body {
+            background-color: #0d0d0d; /* 与主页 a.html 保持一致的深黑色 */
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            font-family: sans-serif;
+        }
+
+        /* --- 2. 核心动画容器 (Purple Falcon 85 风格) --- */
+        .spinner {
+            width: 56px;
+            height: 56px;
+            display: grid;
+            border: 4.5px solid #0000;
+            border-radius: 50%;
+            border-color: #dbdcef #0000;
+            animation: spinner-e04l1k 1s infinite linear;
+            margin-bottom: 25px; /* 为下方文字留出空间 */
+        }
+
+        .spinner::before,
+        .spinner::after {
+            content: "";
+            grid-area: 1/1;
+            margin: 2.2px;
+            border: inherit;
+            border-radius: 50%;
+        }
+
+        .spinner::before {
+            border-color: #7a00ff #0000; /* 使用紫色调 */
+            animation: inherit;
+            animation-duration: 0.5s;
+            animation-direction: reverse;
+        }
+
+        .spinner::after {
+            margin: 8.9px;
+        }
+
+        @keyframes spinner-e04l1k {
+            100% {
+                transform: rotate(1turn);
+            }
+        }
+
+        /* --- 3. Loading 文字样式 --- */
+        .loading-text {
+            color: #7a00ff; /* 紫色文字，呼应彩虹渐变 */
+            font-size: 1.2rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-shadow: 0 0 10px rgba(122, 0, 255, 0.5);
+            animation: pulse 1.5s infinite ease-in-out;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="spinner"></div>
+
+    <div class="loading-text">Loading...</div>
+
+    <script>
+        // 可选：模拟加载完成后跳转到主页或显示内容
+        // setTimeout(() => {
+        //    console.log("加载完成");
+        // }, 3000);
+    </script>
+</body>
+</html>
